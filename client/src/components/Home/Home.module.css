@@ -1,0 +1,35 @@
+.containerNav{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.homelogo{
+    background-image: url(C:\Users\leand\OneDrive\Escritorio\PI-Food-main\client\src\images\HomeLogo.jpg);
+}
+
+
+.buttonCreate{
+    background-color: rgb(23, 218, 5);
+    height: 25px;
+    box-shadow: 2px 2px 4px black;
+    margin: 5px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid rgb(1, 10, 12);
+    width: 150px;
+}
+
+.containerCard{
+    font-family:Times, serif;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content:space-between;
+    width: 97%;
+    border-radius: 1em;
+    background: rgba(238, 235, 235, 0.829);
+    padding: 1em;
+}
+.linkHome{
+    text-decoration: none;
+}
