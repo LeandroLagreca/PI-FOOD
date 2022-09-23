@@ -27,6 +27,7 @@ export function getAllRecipes() {
 export function Getdetail(id){
     return async function (dispatch){
         const detail = await axios.get(`http://localhost:3001/recipes/${id}`)
+        console.log(detail)
         return dispatch({
             type : Get_Detail,
             payload: detail.data
@@ -48,7 +49,8 @@ export function postRecipes(payload){
 
 export function SearchRecipes(name){
     return async function(dispatch){
-        const search = await axios.get('http://localhost:3001/recipes?name =' + name)
+        const search = await axios.get('http://localhost:3001/recipes?name=' + name)
+        console.log(search.data)
         return dispatch({
             type: Search_recipe,
             payload: search.data

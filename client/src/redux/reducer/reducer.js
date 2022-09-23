@@ -119,19 +119,15 @@ const rootReducer = (state = initialState, action)=>{
             }
         }
         case Search_recipe: {
-            if(typeof action.payload === 'string'){
-                alert('Not found the recipes')
-                return {...state}
-            }
             return {
                 ...state,
-                recipes:action.payload
+                recipes: action.payload
             }
         }
         case Clear_detail : {
             return {
             ...state,
-            RecipesDetails: {}
+            RecipesDetails: []
         }
     }
 

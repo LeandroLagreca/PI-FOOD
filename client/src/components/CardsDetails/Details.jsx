@@ -29,34 +29,40 @@ export default function RecipesDetails(){
             {
                 spinner ? <Spinner />  :
                 (
-                    <div className={style.containerBgDetail}>
-                        <div className={style.containerDetail}>
+                    <div className={style.containerDetail}>
+                        <div className={style.containerGpr}>
                             <div className={style.imgDetail}>
-                                <img src ={recipe.image} alt= 'img' />
+                                <img height='100%' width='100%' src ={recipe.image} alt= 'img' />
                             </div>
-                            <div className={style.conatinerTitle} >
+                            <div className={style.containerTitle} >
                                 <h2 className={style.detailTitle}>{recipe.name}</h2>
                             </div>
-                            <div className={style.summarys}>
-                                <h5>Summary:{recipe.summary}</h5>
+                            <div className={style.summaryText}>
+                                <h5>Summary: {recipe.summary}</h5>
                                 </div>
-                            <div className={style.containerSteps} >
-                                <div className={style.StepsText}>
-                                    Steps: {recipe.steps
-                                    }
-                                </div>
+                                <div className={style.healthText}>
+                                <h5>Dish Types: {recipe.dishType}</h5> 
+                                </div> 
+                                <div className={style.healthText}>
+                                    <h5>Health Score: {recipe.healthScore}</h5>
+                                    </div>
+                            <div className={style.stepText} >
+                            {recipe.steps && recipe.steps.length ? <h4>Step by Step:</h4> : null}
+                                {recipe.steps ? <h5 > {Array.isArray(recipe.steps) ? recipe.steps.map(e => e.steps.map(f => f.step)) : recipe.steps }</h5>:null}
                                 </div> 
                                 <div>
-                                <p>
-                                Diets : {
+                                <h5 className={style.dietsText}>
+                                Diets: {
                                     recipe.createdInDb ?
                                     recipe.diets?.map((e)=> e.name).join(' - ')
                                     : recipe.diets?.join(' - ')
                                 }
-                                </p>
+                                </h5>
+                                <div className={style.btn}>
                                 <Link to="/home">
                                     <button className={style.btnBack}>Back</button>
                                 </Link>
+                                </div>
                                 </div>
                                 </div>
                                 </div>

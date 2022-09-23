@@ -7,10 +7,8 @@ import Pagination from '../Pagination/Pagination';
 import Spinner from '../Spinner/Spinner';
 import Filter from '../Filters/Filters';
 import style from './Home.module.css'
-import SearchBar from '../Search Bar/SearchBar';
 import Card from '../Cards/Cards';
-
-
+import SearchBar from '../Search Bar/SearchBar';
 
 export default function Home(){
     const dispatch = useDispatch()
@@ -22,25 +20,25 @@ export default function Home(){
     const currentRecipes= AllRecipes.slice(indexOFirstRecipe, indexOfLastRecipe)
     const paginate = (pageNumber) => SetCurrentPage(pageNumber);
 
-    useEffect(()=>{
-        dispatch(getAllRecipes())
-    }, [dispatch])
-
+    
     const changePage = (pageNumber)=>{
         SetCurrentPage(pageNumber)
     }
-
+    
+    useEffect(()=>{
+        dispatch(getAllRecipes())
+    }, [dispatch])
 
     return (
         <div className={style.homelogo}>
         {currentRecipes.length > 0 ? (
             <div>
                 <div className={style.containerNav}>
-                <img className={style.homelogo} alt =''></img>
-                <SearchBar setCurrentPage={SetCurrentPage}/>
+                    <SearchBar />
                 <Link to='/createRecipes'>
                     <button className={style.buttonCreate}>Create Recipes</button>
                 </Link>
+                <img className={style.homelogo} alt =''></img>
                     </div>
             <Filter  
                 setCurrentPage={SetCurrentPage}/>
@@ -57,7 +55,6 @@ export default function Home(){
                                     <div>
                                         <Link className={style.linkHome} 
                                         to={`recipes/${e.id}`}>
-
                                             <Card 
                                             name ={e.name}
                                             image={e.image}

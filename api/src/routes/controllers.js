@@ -6,8 +6,8 @@ const {API_KEY} = process.env
 const router = Router();
 
 const getApiInfo= async() =>{
-    const Url = await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`)
-    const apiInfo = Url.data.results.map(e=>{
+    let Url = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+    let apiInfo = Url.data.results.map(e=>{
         return {
             id : e.id,
             name: e.title,
@@ -15,7 +15,7 @@ const getApiInfo= async() =>{
             diets: e.diets,
             summary: e.summary,
             healthScore: e.healthScore,
-            dishType: e.dishType,
+            dishType: e.dishTypes,
             steps: e.analyzedInstructions[0]?.steps.map(e => {
                 return {
                     number: e.number,
@@ -68,16 +68,11 @@ const recipeByiD = async (req, res) =>{
     let info = {           
         image: apiRecipesById.data.image,
         name: apiRecipesById.data.title,
-        dishType: apiRecipesById.data.dishType,
+        dishType: apiRecipesById.data.dishTypes,
         diets: apiRecipesById.data.diets,
-        summary: apiRecipesById.data.summary,
+        summary: apiRecipesById.data.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),
         healthScore: apiRecipesById.data.healthScore,
-        steps: apiRecipesById.data.analyzedInstructions[0]?.steps.map(e => {
-            return {
-                number: e.number,
-                step: e.step
-            }
-        })
+        steps: apiRecipesById.data.analyzedInstructions
     }
     return res.send(info)
     }
@@ -96,11 +91,11 @@ const DataRecipe = async (req, res) => {
     try {
         if(name !== undefined){
             if(name!== null){
-                const recipe = allData.filter((e)=> e.name.toLowerCase().includes(name.toLowerCase()));
-                if(recipe.length === 0){
-                    res.send('not Recet')
+                const li = allData.filter((e)=> e.name.toLowerCase().includes(name.toLowerCase()));
+                if(li.length === 0){
+                    res.json('not Recet')
                 } else {
-                    res.json(recipe)
+                    res.json(li)
                 }
             }
         } else {

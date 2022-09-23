@@ -5,6 +5,7 @@
 }
 .homelogo{
     background-image: url(C:\Users\leand\OneDrive\Escritorio\PI-Food-main\client\src\images\HomeLogo.jpg);
+    
 }
 
 
@@ -21,14 +22,16 @@
 }
 
 .containerCard{
-    font-family:Times, serif;
-    display: flex; 
-    flex-wrap: wrap;
-    justify-content:space-between;
     width: 97%;
     border-radius: 1em;
     background: rgba(238, 235, 235, 0.829);
     padding: 1em;
+        width: 1366px;
+        height: 768px;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
 }
 .linkHome{
     text-decoration: none;

@@ -4,7 +4,7 @@ import { SearchRecipes } from '../../redux/actions/actions';
 import Spinner from '../Spinner/Spinner';
 import style from './SearchBar.module.css'
 
-export default function SearchBar(){
+export default function SearchBar({setCurrentPage}){
     const dispatch = useDispatch()
     const [recipeName, SetRecipeName] = useState("")
     const [spinner, setSpinner] = useState(false);
@@ -22,6 +22,7 @@ export default function SearchBar(){
     
     const handleInputChange = (e) => {
         SetRecipeName(e.target.value)
+        console.log(e.target.value)
     };
     const handleKeyPress = (e) =>{
         if(e.key === 'Enter'){

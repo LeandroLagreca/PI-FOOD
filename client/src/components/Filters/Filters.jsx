@@ -76,7 +76,6 @@ export default function Filter({setCurrentPage}){
                         <option value = 'primal'> Primal </option>
                         <option value = 'vegan'> Vegan </option>
                         <option value = 'whole 30'> Whole 30 </option>
-                        <option value = 'vegetarian'> Vegetarian </option>
                     </select>
                     </div>
                     <div>

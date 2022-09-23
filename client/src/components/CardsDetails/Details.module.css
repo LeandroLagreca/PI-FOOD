@@ -1,0 +1,84 @@
+.containerDetail{
+    display:flex;
+    flex-wrap: wrap;
+    background-image: url(C:\Users\leand\OneDrive\Escritorio\PI-Food-main\client\src\images\landingpage.jpg);
+    width: 100%;
+    height: 100%;
+}
+.containerTitle{
+    height: 80px;
+    position: absolute;
+    margin-left: 15px;
+    width: 34%;
+}
+.detailTitle{
+    color:black;
+    font-size :1.8em;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+.summaryText{
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10em;
+    border-radius: 1em;
+    background: rgba(62, 250, 4, 0.829);
+    padding: 1em;
+}
+.dietsText{
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    grid-area: 2 / 1 / 3 / 2;
+    height: 3rem;
+    padding: 2rem;
+    font-size: 1.2rem;
+    background: rgba(62, 250, 4, 0.829);
+    border-radius: 1em;
+}
+
+.imgDetail{
+    width: 90%;
+    height: 25%;
+}
+.stepText{
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 2em;
+    border-radius: 1em;
+    background: rgba(62, 250, 4, 0.829);
+    padding: 1em;
+}
+.healthText{
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    background: rgba(62, 250, 4, 0.829);
+    height: 2.5rem;
+    margin-top: 1em;
+    border-radius: 1em;
+    font-size: 150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerGpr{
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 2em;
+    border-radius: 1em;
+    background: rgba(255, 255,255, 0.829);
+    padding: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-bottom: 1em;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.btnBack{
+    width: 130px;
+    height: 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 8px;
+    transition: all0.4s;
+}
