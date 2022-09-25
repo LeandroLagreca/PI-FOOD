@@ -111,9 +111,9 @@ const recipeCreate = async(req, res) => {
     try {
         const {name, summary, image, healthScore, steps, diets, createdInDb}= req.body;
         const newRecipe = await Recipe.create({
-            name, 
+            name:  name,
             summary,
-            image,
+            image: image || 'https://st.depositphotos.com/1987177/3470/v/600/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg',
             healthScore,
             createdInDb,
             steps

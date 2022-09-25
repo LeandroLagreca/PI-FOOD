@@ -8,14 +8,19 @@ import style from './Created.module.css'
 
 const validateForm = (input) => {
     let errors = {}
+    if (/^[A-Za-z0-9\s]+$/g.test(input.title)) errors.name = 'invalid name'
     if(!input.name) errors.name = 'name is required'
-    if(input.name.length < 3) errors.name = 'invalid name'
+    if(input.name.length < 3 ) errors.name = 'invalid name'
     if(input.name.length > 15) errors.name = 'Invalid name'
-    if(!input.summary) errors.summary = 'Summary is required'
+    if (!input.summary) {
+        errors.summary = "A summary is required";
+        } else if (input.summary.length < 20) {
+        errors.summary = "must have at least 20 characters";
+        }
     if(!input.healthScore){
         errors.healthScore = 'Health Score is required'
-    } else if(input.healthScore < 1 || input.healthScore > 100){
-        errors.healthScore = 'The healt Score must be between 1 and 5'
+    } else if(input.healthScore < 5 || input.healthScore > 100){
+        errors.healthScore = 'The healt Score must be between 5 and 100'
     }
 return errors;
 }
@@ -30,8 +35,7 @@ export default function  CreateRecipe(){
         steps:"",
         diets: [],
         summary:"",
-        healthScore:"",
-        image:'https://st.depositphotos.com/1987177/3470/v/600/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg'
+        healthScore:5,
     });
 
     useEffect(()=>{
@@ -81,18 +85,25 @@ export default function  CreateRecipe(){
     
     }
     const handleSubmitForm = (e) => {
-        if(
-            recipes.find((recipes) => recipes.name.toLowerCase()=== input.name.toLowerCase())
-        ) { 
-            e.preventDefault()
-            alert( 'Not create, the diets already existing' )
+        if (!input.summary) {
+            return alert("A summary is required");
+            } else if (input.summary.length < 20) {
+            alert("Must have at least 20 characters")}
+        else if(!input.healthScore){
+            return alert('Health Score is required')
+        } else if(input.healthScore < 1 || input.healthScore > 100){
+            return alert('The healt Score must be between 5 and 100')
         }
-        e.preventDefault()
-        if(input.diets.length ===0){
-            alert('Not create, at least 1 diets is required')
-        } else if (input.diets.length > 4){
-            alert('Not create, maximum 4 diets')
-        } else {
+    else if(!input.name) return alert('name is required')
+    else if(input.name.length < 3) return alert('invalid name')
+    else if(input.name.length > 15) return alert('Invalid name')
+    else if (/^[A-Za-z0-9\s]+$/g.test(input.title)) return alert('Invalid Name')
+    else if(recipes.find((recipes) => recipes.name.toLowerCase()=== input.name.toLowerCase())) { 
+            return alert( 'Not create, the Recipe already existing' )
+        }
+        else if(input.diets.length ===0) return alert('Not create, at least 1 diets is required')
+        else if (input.diets.length > 4) return alert('Not create, maximum 4 diets')
+        else {
             dispatch(postRecipes(input))
             dispatch(getAllRecipes())
         alert('¡Successfully created recipe!')
@@ -101,8 +112,7 @@ export default function  CreateRecipe(){
         steps:"",
         diets: [],
         summary:"",
-        healthScore:"",
-        image:'https://st.depositphotos.com/1987177/3470/v/600/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg'
+        healthScore:5,
             })
         history.push('/home')
         }
@@ -116,7 +126,6 @@ export default function  CreateRecipe(){
                 <div className={style.containertitle}>
                     <h1>Create Recipe</h1>
                 </div>
-
 
                 <form
                 className={style.containerFormInside}
@@ -132,8 +141,7 @@ export default function  CreateRecipe(){
                         onChange={(e) => handleChange(e)}
                         required={true}></input>
                         {errors.name && <p className={style.errorText}>{errors.name}</p>}
-                    </div>
-
+                    </div> 
 
                     <div>
                         <h5 >Summary:</h5>
@@ -147,7 +155,6 @@ export default function  CreateRecipe(){
                         {errors.summary && <p className={style.errorText}>{errors.summary}</p>}
                     </div>
 
-
                     <div>
                         <h5>Steps: </h5>
                         <input
@@ -157,13 +164,12 @@ export default function  CreateRecipe(){
                         placeholder='Steps...'
                         onChange={e => handleChange(e)}
                         />
-                            
+                            {errors.steps && <p className={style.errorText}>{errors.steps}</p>}
                             
                     </div>
 
-
                     <div>
-                        <div className={style.ContainerButtonFormX}>
+                        <div className={style.DietsForm}>
                     <h5>Select Diets:</h5>
                     <input value ='dairy free' type = 'checkbox' onClick={handleSelectDiets}/> <label>Dairy Free</label>
                     <input value ='gluten free' type = 'checkbox' onClick={handleSelectDiets} /> <label>Gluten Free</label>
@@ -194,7 +200,6 @@ export default function  CreateRecipe(){
                             <p className={style.errorText}>{errors.healthScore}</p>
                         )}
                     </div>
-
 
                     <div>
                         <button className={style.buttonCreate}

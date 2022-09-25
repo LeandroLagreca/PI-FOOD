@@ -11,6 +11,8 @@ export default function SearchBar({setCurrentPage}){
 
     
     const handleSubmit = (e) =>{
+        if(recipeName.length > 15)  return alert('maximum call')
+        if(!recipeName) return alert('enter game name');
         e.preventDefault()
         setSpinner(true);
         dispatch(SearchRecipes(recipeName))
