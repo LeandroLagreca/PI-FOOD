@@ -9,7 +9,7 @@ export default function LandingPage(){
         <div className={style.container}>
             <div alt = 'BackGround' className={style.img_background}/>
             <Link to='/home' className={style.link}>
-            < div className={style.buttonContainer}>
+            <div className={style.buttonContainer}>
                 <button className={style.btn}>Welcome To My App! </button>
             </div>
             </Link>

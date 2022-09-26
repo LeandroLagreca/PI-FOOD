@@ -131,8 +131,22 @@ const recipeCreate = async(req, res) => {
     }
 }
 
+const recipeEliminated = async(req, res)=>{
+    try {
+        const {id} = req.params
+        const 
+        searchId = await Recipe.findByPk(id)
+        if(!searchId) res.status(400).json({error:error.message})
+        await searchId.Destroy()
+        return res.json({msg: 'The recipe ${id} has been removed'})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     recipeCreate,
     DataRecipe,
-    recipeByiD
+    recipeByiD,
+    recipeEliminated
 }

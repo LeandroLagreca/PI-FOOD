@@ -1,8 +1,7 @@
 .containerForm{
+    background-size: cover;
     background-image: url(C:\Users\leand\OneDrive\Escritorio\PI-Food-main\client\src\images\HomeLogo.jpg);    
     color:#000532;
-    width: 100vw;
-    height:100vh;
     line-height:0pc;
     display: flex;
     justify-content: center;
@@ -23,21 +22,19 @@
     flex-direction: column;
 }
 .textSteps{
-    width: 600px;
-    height: 60px;
-    position:absolute;
+    width: 400px;
+    height: 50px;
+    
     background: transparent; 
-    top: 555px;
+    
     left: 37.3%;
     font-size: 20px;
 }
 .textSummary{
-    width: 500px;
-    height: 70px;
-    position:absolute;
+    width: 400px;
+    height: 50px;
     background: transparent; 
-    top: 340px;
-    left: 42%;
+    left: 37.3%;
     font-size: 20px;
 }
 
@@ -46,6 +43,7 @@
     border: #000532;
     color:#000532;
     text-align: center;
+    background: transparent; 
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 15px;
 }
@@ -63,7 +61,7 @@
 .inputForm:focus{
     color:burlywood;
     background-color: #000532;
-    outline-color: orange;
+    outline-color: rgb(0, 255, 13);
 }
 .errorText{
     font-size: 12px;
@@ -91,7 +89,6 @@
     background-color:rgb(23, 218, 5);
     height: 25px;
     box-shadow: 2px 2px 4px black;
-    
     cursor: pointer;
     color: rgb(15, 15, 15);
     border-radius: 5px;

@@ -4,6 +4,7 @@
     align-items: center;
 }
 .homelogo{
+    background-size: cover;
     background-image: url(C:\Users\leand\OneDrive\Escritorio\PI-Food-main\client\src\images\HomeLogo.jpg);
     
 }

@@ -146,6 +146,7 @@ export default function  CreateRecipe(){
                     <div>
                         <h5 >Summary:</h5>
                         <input
+                        className={style.textSummary}
                         type='text'
                         value={input.summary}
                         name='summary'
@@ -158,6 +159,7 @@ export default function  CreateRecipe(){
                     <div>
                         <h5>Steps: </h5>
                         <input
+                        className={style.textSteps}
                         type="text"
                         name="steps"
                         value={input.steps}

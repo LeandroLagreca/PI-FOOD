@@ -14,7 +14,7 @@
 .cardContainer:hover {
     filter: drop-shadow(5px 5px 5px #31f101);
     transition: all 0.5s ease-out ;
-    background-color: #0ddb2f69;
+    background-color: #05741769;
 }
 
 .titleCard {

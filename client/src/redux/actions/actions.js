@@ -11,19 +11,24 @@ export const Order_By_Name = 'order_by_name';
 export const Order_Health_Score = 'order_health_score';
 export const Get_Detail = 'get_details';
 export const Clear_detail= 'Clear_Details';
-
-
-
+export const DELETE_RECIPE = 'Delete_Recipe'
+/*
+return async function(dispatch){
+    const response = await axios.get('http://localhost:3001/recipes')
+    return dispatch({
+        type : Get_All_Recipes,
+        payload: response.data
+    })
+} */
 export function getAllRecipes() {
     return async function(dispatch){
-        const response = await axios.get('http://localhost:3001/recipes')
-        return dispatch({
-            type : Get_All_Recipes,
-            payload: response.data
-        })
-    }
+    return fetch('http://localhost:3001/recipes')
+    .then((response)=> response.json())
+    .then((json)=>{
+        dispatch({type:Get_All_Recipes, payload: json})
+    })
 };
-
+}
 export function Getdetail(id){
     return async function (dispatch){
         const detail = await axios.get(`http://localhost:3001/recipes/${id}`)
@@ -101,4 +106,8 @@ export function clearDetail(payload){
         type: Clear_detail,
         payload    
     }
+}
+
+export const deleteRecipe = function (id){
+    return { type: DELETE_RECIPE, payload: id };
 }
